@@ -90,29 +90,29 @@ export default function Bootcamp() {
         </div>
       </nav>
 
-      {/* Hero Section — matches homepage white style */}
+      {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white"
+        className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-white"
       >
         <div className="absolute inset-0 z-0">
-          <img src="/images/hero-bg-cool.png" alt="" className="w-full h-full object-cover opacity-40" />
+          <img src="/images/hero-bg-cool.png" alt="" className="w-full h-full object-cover opacity-30" />
         </div>
 
-        <div className="relative z-10 w-full px-6 lg:px-12 pt-24 pb-16">
+        <div className="relative z-10 w-full px-6 lg:px-12 pt-28 md:pt-24 pb-16">
           <div className="max-w-5xl mx-auto">
             {/* Partner Logos */}
             <div
-              className={`flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 mb-12 transition-all duration-1000 ${
+              className={`flex flex-col md:flex-row items-center justify-center gap-4 md:gap-10 mb-8 md:mb-12 transition-all duration-1000 ${
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
-              <img src="/logo.png" alt="Novastaq" className="h-10 md:h-12 w-auto" />
+              <img src="/logo.png" alt="Novastaq" className="h-8 md:h-12 w-auto" />
               <span className="text-gray-400 text-lg font-medium hidden md:block">×</span>
               <img
                 src="/deezaina-logo.png"
                 alt="Deezaina Studios"
-                className="h-10 md:h-12 w-auto"
+                className="h-8 md:h-12 w-auto"
               />
             </div>
 
@@ -122,14 +122,14 @@ export default function Bootcamp() {
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
-              <span className="inline-block px-4 py-2 rounded-full bg-gray-100 text-gray-600 text-sm font-medium">
+              <span className="inline-block px-4 py-2 rounded-full bg-gray-100 text-gray-600 text-xs md:text-sm font-medium">
                 Limited Spots Available
               </span>
             </div>
 
             {/* Headline */}
             <h1
-              className={`font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 text-center leading-tight mb-6 transition-all duration-1000 delay-200 ${
+              className={`font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 text-center leading-tight mb-4 md:mb-6 transition-all duration-1000 delay-200 ${
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
@@ -139,7 +139,7 @@ export default function Bootcamp() {
             </h1>
 
             <p
-              className={`text-lg md:text-xl text-gray-600 text-center max-w-2xl mx-auto mb-12 transition-all duration-1000 delay-300 ${
+              className={`text-base md:text-lg text-gray-600 text-center max-w-xl mx-auto mb-8 md:mb-12 px-2 sm:px-0 transition-all duration-1000 delay-300 ${
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
@@ -149,18 +149,18 @@ export default function Bootcamp() {
 
             {/* Highlights */}
             <div
-              className={`grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-12 transition-all duration-1000 delay-400 ${
+              className={`grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-3xl mx-auto mb-8 md:mb-12 transition-all duration-1000 delay-400 ${
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
               {highlights.map((h) => (
                 <div
                   key={h.label}
-                  className="text-center p-4 rounded-2xl bg-white shadow-sm border border-gray-100"
+                  className="text-center p-3 md:p-4 rounded-2xl bg-white/80 backdrop-blur-sm shadow-sm border border-gray-100"
                 >
-                  <h.icon className="w-6 h-6 text-gray-900 mx-auto mb-2" />
-                  <p className="text-gray-900 font-semibold text-sm">{h.label}</p>
-                  <p className="text-gray-500 text-xs mt-1">{h.desc}</p>
+                  <h.icon className="w-5 h-5 md:w-6 md:h-6 text-gray-900 mx-auto mb-2" />
+                  <p className="text-gray-900 font-semibold text-xs md:text-sm">{h.label}</p>
+                  <p className="text-gray-500 text-[10px] md:text-xs mt-1">{h.desc}</p>
                 </div>
               ))}
             </div>
@@ -173,7 +173,7 @@ export default function Bootcamp() {
             >
               <a
                 href="#register"
-                className="inline-flex items-center gap-2 bg-gray-900 text-white hover:bg-gray-800 px-8 py-4 rounded-full font-semibold text-sm transition-colors"
+                className="inline-flex items-center gap-2 bg-gray-900 text-white hover:bg-gray-800 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-sm transition-colors"
               >
                 Register Now <ArrowRight className="w-4 h-4" />
               </a>
@@ -183,33 +183,33 @@ export default function Bootcamp() {
       </section>
 
       {/* Agenda Section */}
-      <section ref={agendaRef} className="py-24 bg-gray-50">
+      <section ref={agendaRef} className="py-16 md:py-24 bg-gray-50">
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
             <div
-              className={`text-center mb-16 transition-all duration-700 ${
+              className={`text-center mb-10 md:mb-16 transition-all duration-700 ${
                 agendaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
-              <h2 className="font-heading text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                 What You&apos;ll Learn
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
                 A carefully crafted 4-day curriculum designed to take you from zero to building with AI.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-4 md:gap-6">
               {days.map((d, i) => (
                 <div
                   key={d.day}
-                  className={`group p-6 rounded-2xl bg-white hover:shadow-xl transition-all duration-500 border border-gray-100 ${
+                  className={`group p-5 md:p-6 rounded-2xl bg-white hover:shadow-xl transition-all duration-500 border border-gray-100 ${
                     agendaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}
                   style={{ transitionDelay: `${(i + 1) * 100}ms` }}
                 >
-                  <span className="text-gray-900 font-mono text-sm mb-3 block">{d.day}</span>
-                  <h3 className="font-heading text-lg font-semibold text-gray-900 mb-2">
+                  <span className="text-gray-900 font-mono text-sm mb-2 md:mb-3 block">{d.day}</span>
+                  <h3 className="font-heading text-base md:text-lg font-semibold text-gray-900 mb-2">
                     {d.title}
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed">{d.desc}</p>
@@ -221,56 +221,57 @@ export default function Bootcamp() {
       </section>
 
       {/* Registration Section */}
-      <section id="register" ref={formRef} className="py-24 bg-white">
+      <section id="register" ref={formRef} className="py-16 md:py-24 bg-white">
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-start">
               {/* Left: Info */}
               <div
                 className={`transition-all duration-700 ${
-                  formVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+                  formVisible ? 'opacity-100 translate-y-0 lg:translate-x-0' : 'opacity-0 translate-y-8 lg:-translate-x-8'
                 }`}
               >
-                <h2 className="font-heading text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                   Secure Your Spot
                 </h2>
-                <p className="text-gray-600 mb-8">
+                <p className="text-gray-600 mb-8 text-sm md:text-base">
                   Fill out the form to register for the bootcamp. We&apos;ll send you all the details via email.
                 </p>
 
-                <div className="space-y-6">
+                <div className="space-y-5 md:space-y-6">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
-                      <Calendar className="w-5 h-5 text-gray-600" />
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-100 flex items-center justify-center flex-shrink-0">
+                      <Calendar className="w-4 h-4 md:w-5 md:h-5 text-gray-600" />
                     </div>
                     <div>
-                      <p className="text-gray-900 font-medium">4-Day Program</p>
-                      <p className="text-gray-500 text-sm">Intensive hands-on workshops</p>
+                      <p className="text-gray-900 font-medium text-sm md:text-base">4-Day Program</p>
+                      <p className="text-gray-500 text-xs md:text-sm">Intensive hands-on workshops</p>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
-                      <Globe className="w-5 h-5 text-gray-600" />
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-100 flex items-center justify-center flex-shrink-0">
+                      <Globe className="w-4 h-4 md:w-5 md:h-5 text-gray-600" />
                     </div>
                     <div>
-                      <p className="text-gray-900 font-medium">Follow for Updates</p>
-                      <div className="flex gap-3 mt-1">
+                      <p className="text-gray-900 font-medium text-sm md:text-base">Follow for Updates</p>
+                      <div className="flex flex-wrap gap-2 md:gap-3 mt-1">
                         <a
                           href="https://x.com/NovastaqHQ"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-gray-900 transition-colors"
+                          className="inline-flex items-center gap-1 text-gray-600 hover:text-gray-900 transition-colors text-xs md:text-sm"
                         >
-                          <Twitter className="w-5 h-5" />
+                          <Twitter className="w-3.5 h-3.5 md:w-4 md:h-4" /> @NovastaqHQ
                         </a>
+                        <span className="text-gray-300 hidden sm:inline">·</span>
                         <a
                           href="https://x.com/DeezainaStudios"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-gray-900 transition-colors"
+                          className="inline-flex items-center gap-1 text-gray-600 hover:text-gray-900 transition-colors text-xs md:text-sm"
                         >
-                          <span className="text-sm font-medium">@DeezainaStudios</span>
+                          <Twitter className="w-3.5 h-3.5 md:w-4 md:h-4" /> @DeezainaStudios
                         </a>
                       </div>
                     </div>
@@ -281,30 +282,30 @@ export default function Bootcamp() {
               {/* Right: Form */}
               <div
                 className={`transition-all duration-700 delay-200 ${
-                  formVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+                  formVisible ? 'opacity-100 translate-y-0 lg:translate-x-0' : 'opacity-0 translate-y-8 lg:translate-x-8'
                 }`}
               >
-                <div className="p-8 rounded-3xl bg-gray-50">
+                <div className="p-6 md:p-8 rounded-3xl bg-gray-50">
                   {submitted ? (
-                    <div className="text-center py-8">
-                      <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
-                        <CheckCircle className="w-8 h-8 text-green-600" />
+                    <div className="text-center py-6 md:py-8">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-5 md:mb-6">
+                        <CheckCircle className="w-7 h-7 md:w-8 md:h-8 text-green-600" />
                       </div>
-                      <h3 className="font-heading text-2xl font-bold text-gray-900 mb-2">
+                      <h3 className="font-heading text-xl md:text-2xl font-bold text-gray-900 mb-2">
                         You&apos;re Registered!
                       </h3>
-                      <p className="text-gray-600 mb-6">
+                      <p className="text-gray-600 mb-5 md:mb-6 text-sm md:text-base">
                         Thank you for signing up. We&apos;ll be in touch soon with all the bootcamp details.
                       </p>
                       <a
                         href="/"
-                        className="inline-flex items-center gap-2 text-gray-900 font-medium hover:underline"
+                        className="inline-flex items-center gap-2 text-gray-900 font-medium hover:underline text-sm md:text-base"
                       >
                         Back to Home <ArrowRight className="w-4 h-4" />
                       </a>
                     </div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="space-y-5">
+                    <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
                       <div>
                         <label className="block text-gray-700 text-sm font-medium mb-2">
                           Full Name <span className="text-red-500">*</span>
@@ -315,7 +316,7 @@ export default function Bootcamp() {
                           required
                           value={formData.name}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-400 transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-400 transition-colors text-sm"
                           placeholder="John Doe"
                         />
                       </div>
@@ -330,7 +331,7 @@ export default function Bootcamp() {
                           required
                           value={formData.email}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-400 transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-400 transition-colors text-sm"
                           placeholder="you@example.com"
                         />
                       </div>
@@ -343,7 +344,7 @@ export default function Bootcamp() {
                           name="experience"
                           value={formData.experience}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 focus:outline-none focus:border-gray-400 transition-colors appearance-none"
+                          className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 focus:outline-none focus:border-gray-400 transition-colors appearance-none text-sm"
                         >
                           <option value="">Select your experience level</option>
                           <option value="none">No experience — completely new to AI</option>
@@ -364,41 +365,9 @@ export default function Bootcamp() {
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-400 transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-400 transition-colors text-sm"
                           placeholder="+234 800 000 0000"
                         />
-                      </div>
-
-                      <div className="flex items-start gap-3 pt-2">
-                        <input
-                          type="checkbox"
-                          name="followTwitter"
-                          id="followTwitter"
-                          checked={formData.followTwitter}
-                          onChange={handleChange}
-                          className="mt-1 w-4 h-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900"
-                        />
-                        <label htmlFor="followTwitter" className="text-sm text-gray-600 leading-relaxed">
-                          I agree to follow{' '}
-                          <a
-                            href="https://x.com/NovastaqHQ"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-gray-900 font-medium hover:underline"
-                          >
-                            <Twitter className="w-3.5 h-3.5" /> @NovastaqHQ
-                          </a>{' '}
-                          and{' '}
-                          <a
-                            href="https://x.com/DeezainaStudios"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-gray-900 font-medium hover:underline"
-                          >
-                            <Twitter className="w-3.5 h-3.5" /> @DeezainaStudios
-                          </a>{' '}
-                          on X (Twitter) for updates.
-                        </label>
                       </div>
 
                       <Button
@@ -417,33 +386,33 @@ export default function Bootcamp() {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 bg-gray-900 text-white">
+      <footer className="py-12 md:py-16 bg-gray-900 text-white">
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-10 md:mb-12">
               <div className="col-span-2 md:col-span-1">
-                <img src="/logo.png" alt="Novastaq" className="h-8 w-auto mb-4 invert" />
-                <p className="text-gray-400 text-sm mb-6">
+                <img src="/logo.png" alt="Novastaq" className="h-7 md:h-8 w-auto mb-4 invert" />
+                <p className="text-gray-400 text-xs md:text-sm mb-5 md:mb-6">
                   Build next-gen digital products—venture studio, Web2, and Web3 solutions via one modern partner.
                 </p>
-                <div className="flex gap-4">
+                <div className="flex gap-3 md:gap-4">
                   <a
                     href="https://x.com/NovastaqHQ"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors"
+                    className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors"
                   >
-                    <Twitter className="w-5 h-5" />
+                    <Twitter className="w-4 h-4 md:w-5 md:h-5" />
                   </a>
                 </div>
               </div>
 
               <div>
-                <h4 className="text-gray-500 text-sm font-medium mb-4 uppercase tracking-wider">Program</h4>
-                <ul className="space-y-3">
+                <h4 className="text-gray-500 text-xs md:text-sm font-medium mb-3 md:mb-4 uppercase tracking-wider">Program</h4>
+                <ul className="space-y-2 md:space-y-3">
                   {['Day 1', 'Day 2', 'Day 3', 'Day 4'].map((item) => (
                     <li key={item}>
-                      <a href="#register" className="text-gray-300 hover:text-white transition-colors text-sm">
+                      <a href="#register" className="text-gray-300 hover:text-white transition-colors text-xs md:text-sm">
                         {item}
                       </a>
                     </li>
@@ -452,15 +421,15 @@ export default function Bootcamp() {
               </div>
 
               <div>
-                <h4 className="text-gray-500 text-sm font-medium mb-4 uppercase tracking-wider">Partners</h4>
-                <ul className="space-y-3">
+                <h4 className="text-gray-500 text-xs md:text-sm font-medium mb-3 md:mb-4 uppercase tracking-wider">Partners</h4>
+                <ul className="space-y-2 md:space-y-3">
                   <li>
-                    <a href="https://x.com/NovastaqHQ" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors text-sm">
+                    <a href="https://x.com/NovastaqHQ" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors text-xs md:text-sm">
                       Novastaq
                     </a>
                   </li>
                   <li>
-                    <a href="https://x.com/DeezainaStudios" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors text-sm">
+                    <a href="https://x.com/DeezainaStudios" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors text-xs md:text-sm">
                       Deezaina Studios
                     </a>
                   </li>
@@ -468,16 +437,16 @@ export default function Bootcamp() {
               </div>
 
               <div>
-                <h4 className="text-gray-500 text-sm font-medium mb-4 uppercase tracking-wider">Resources</h4>
-                <ul className="space-y-3">
-                  <li><a href="/" className="text-gray-300 hover:text-white transition-colors text-sm">Home</a></li>
-                  <li><a href="#register" className="text-gray-300 hover:text-white transition-colors text-sm">Register</a></li>
+                <h4 className="text-gray-500 text-xs md:text-sm font-medium mb-3 md:mb-4 uppercase tracking-wider">Resources</h4>
+                <ul className="space-y-2 md:space-y-3">
+                  <li><a href="/" className="text-gray-300 hover:text-white transition-colors text-xs md:text-sm">Home</a></li>
+                  <li><a href="#register" className="text-gray-300 hover:text-white transition-colors text-xs md:text-sm">Register</a></li>
                 </ul>
               </div>
             </div>
 
-            <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-gray-500 text-sm">
+            <div className="pt-6 md:pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
+              <p className="text-gray-500 text-xs md:text-sm text-center md:text-left">
                 © {new Date().getFullYear()} Novastaq Technologies Inc. & Deezaina Studios. All rights reserved.
               </p>
             </div>
