@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, CheckCircle, Calendar, Clock, Users, Zap, Twitter, Globe } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 
 function useIntersectionObserver(options = {}) {
   const [isIntersecting, setIsIntersecting] = useState(false);
@@ -24,34 +23,41 @@ function useIntersectionObserver(options = {}) {
   return { ref: setRef, isIntersecting };
 }
 
+const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSd2RxKMDz4QyGfFUcM3FwgaCCOLbtKPluqRpubgwjzW6e8KQQ/viewform?usp=sf_link';
+const WHATSAPP_LINK = 'https://chat.whatsapp.com/EQ5qb20PDe28y4t3ZJ0Hyv';
+
 export default function Bootcamp() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    experience: '',
-    phone: '',
-    followTwitter: false,
-  });
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
     setIsLoaded(true);
     window.scrollTo(0, 0);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  // Listen for Google Form submission by detecting iframe URL changes
+  useEffect(() => {
+    const checkFormSubmit = () => {
+      try {
+        if (iframeRef.current) {
+          const iframeUrl = iframeRef.current.src;
+          if (iframeUrl.includes('formResponse')) {
+            setSubmitted(true);
+            // Redirect to WhatsApp after a short delay
+            setTimeout(() => {
+              window.location.href = WHATSAPP_LINK;
+            }, 1500);
+          }
+        }
+      } catch {
+        // Cross-origin restrictions may prevent reading iframe URL
+      }
+    };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
-    }));
-  };
+    const interval = setInterval(checkFormSubmit, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const highlights = [
     { icon: Calendar, label: '4 Days', desc: 'Intensive hands-on program' },
@@ -235,7 +241,7 @@ export default function Bootcamp() {
                   Secure Your Spot
                 </h2>
                 <p className="text-gray-600 mb-8 text-sm md:text-base">
-                  Fill out the form to register for the bootcamp. We&apos;ll send you all the details via email.
+                  Fill out the form to register for the bootcamp. After signing up, you&apos;ll be redirected to join our WhatsApp group for all updates.
                 </p>
 
                 <div className="space-y-5 md:space-y-6">
@@ -279,106 +285,61 @@ export default function Bootcamp() {
                 </div>
               </div>
 
-              {/* Right: Form */}
+              {/* Right: Google Form */}
               <div
                 className={`transition-all duration-700 delay-200 ${
                   formVisible ? 'opacity-100 translate-y-0 lg:translate-x-0' : 'opacity-0 translate-y-8 lg:translate-x-8'
                 }`}
               >
-                <div className="p-6 md:p-8 rounded-3xl bg-gray-50">
-                  {submitted ? (
-                    <div className="text-center py-6 md:py-8">
-                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-5 md:mb-6">
-                        <CheckCircle className="w-7 h-7 md:w-8 md:h-8 text-green-600" />
-                      </div>
-                      <h3 className="font-heading text-xl md:text-2xl font-bold text-gray-900 mb-2">
-                        You&apos;re Registered!
-                      </h3>
-                      <p className="text-gray-600 mb-5 md:mb-6 text-sm md:text-base">
-                        Thank you for signing up. We&apos;ll be in touch soon with all the bootcamp details.
-                      </p>
-                      <a
-                        href="/"
-                        className="inline-flex items-center gap-2 text-gray-900 font-medium hover:underline text-sm md:text-base"
-                      >
-                        Back to Home <ArrowRight className="w-4 h-4" />
-                      </a>
+                {submitted ? (
+                  <div className="p-6 md:p-8 rounded-3xl bg-gray-50 text-center">
+                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-5 md:mb-6">
+                      <CheckCircle className="w-7 h-7 md:w-8 md:h-8 text-green-600" />
                     </div>
-                  ) : (
-                    <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
-                      <div>
-                        <label className="block text-gray-700 text-sm font-medium mb-2">
-                          Full Name <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          name="name"
-                          required
-                          value={formData.name}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-400 transition-colors text-sm"
-                          placeholder="John Doe"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-gray-700 text-sm font-medium mb-2">
-                          Email Address <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="email"
-                          name="email"
-                          required
-                          value={formData.email}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-400 transition-colors text-sm"
-                          placeholder="you@example.com"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-gray-700 text-sm font-medium mb-2">
-                          Level of Experience Using AI
-                        </label>
-                        <select
-                          name="experience"
-                          value={formData.experience}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 focus:outline-none focus:border-gray-400 transition-colors appearance-none text-sm"
-                        >
-                          <option value="">Select your experience level</option>
-                          <option value="none">No experience — completely new to AI</option>
-                          <option value="beginner">Beginner — used ChatGPT or similar tools</option>
-                          <option value="intermediate">
-                            Intermediate — built something with AI assistance
-                          </option>
-                          <option value="advanced">Advanced — regularly build with AI tools</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="block text-gray-700 text-sm font-medium mb-2">
-                          Phone Number
-                        </label>
-                        <input
-                          type="tel"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-400 transition-colors text-sm"
-                          placeholder="+234 800 000 0000"
-                        />
-                      </div>
-
-                      <Button
-                        type="submit"
-                        className="w-full bg-gray-900 hover:bg-gray-800 text-white py-3 rounded-full text-sm font-semibold mt-2"
-                      >
-                        Register for Bootcamp
-                      </Button>
-                    </form>
-                  )}
-                </div>
+                    <h3 className="font-heading text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                      You&apos;re Registered!
+                    </h3>
+                    <p className="text-gray-600 mb-5 md:mb-6 text-sm md:text-base">
+                      Redirecting you to the WhatsApp group...
+                    </p>
+                    <a
+                      href={WHATSAPP_LINK}
+                      className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-semibold text-sm transition-colors"
+                    >
+                      Join WhatsApp Group <ArrowRight className="w-4 h-4" />
+                    </a>
+                  </div>
+                ) : (
+                  <div className="rounded-3xl bg-gray-50 overflow-hidden">
+                    <iframe
+                      ref={iframeRef}
+                      src={GOOGLE_FORM_URL}
+                      width="100%"
+                      height="800"
+                      className="border-0 w-full"
+                      title="Bootcamp Registration Form"
+                      onLoad={() => {
+                        // Try to detect form submission via URL change
+                        try {
+                          const iframe = iframeRef.current;
+                          if (iframe && iframe.contentWindow) {
+                            const currentUrl = iframe.contentWindow.location.href;
+                            if (currentUrl.includes('formResponse')) {
+                              setSubmitted(true);
+                              setTimeout(() => {
+                                window.location.href = WHATSAPP_LINK;
+                              }, 1500);
+                            }
+                          }
+                        } catch {
+                          // Cross-origin restrictions prevent reading iframe URL
+                        }
+                      }}
+                    >
+                      Loading…
+                    </iframe>
+                  </div>
+                )}
               </div>
             </div>
           </div>
