@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowRight, CheckCircle, Calendar, Clock, Users, Zap, Twitter, Globe } from 'lucide-react';
+import { ArrowRight, CheckCircle, Calendar, Clock, Users, Zap, Twitter, Globe, Facebook, Instagram } from 'lucide-react';
 
 function useIntersectionObserver(options = {}) {
   const [isIntersecting, setIsIntersecting] = useState(false);
@@ -44,7 +44,6 @@ export default function Bootcamp() {
           const iframeUrl = iframeRef.current.src;
           if (iframeUrl.includes('formResponse')) {
             setSubmitted(true);
-            // Redirect to WhatsApp after a short delay
             setTimeout(() => {
               window.location.href = WHATSAPP_LINK;
             }, 1500);
@@ -270,15 +269,6 @@ export default function Bootcamp() {
                         >
                           <Twitter className="w-3.5 h-3.5 md:w-4 md:h-4" /> @NovastaqHQ
                         </a>
-                        <span className="text-gray-300 hidden sm:inline">·</span>
-                        <a
-                          href="https://x.com/DeezainaStudios"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-gray-600 hover:text-gray-900 transition-colors text-xs md:text-sm"
-                        >
-                          <Twitter className="w-3.5 h-3.5 md:w-4 md:h-4" /> @DeezainaStudios
-                        </a>
                       </div>
                     </div>
                   </div>
@@ -319,7 +309,6 @@ export default function Bootcamp() {
                       className="border-0 w-full"
                       title="Bootcamp Registration Form"
                       onLoad={() => {
-                        // Try to detect form submission via URL change
                         try {
                           const iframe = iframeRef.current;
                           if (iframe && iframe.contentWindow) {
@@ -346,70 +335,57 @@ export default function Bootcamp() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 md:py-16 bg-gray-900 text-white">
+      {/* Footer — matches homepage exactly */}
+      <footer className="py-16 bg-gray-900 text-white">
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-10 md:mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
               <div className="col-span-2 md:col-span-1">
-                <img src="/logo.png" alt="Novastaq" className="h-7 md:h-8 w-auto mb-4 invert" />
-                <p className="text-gray-400 text-xs md:text-sm mb-5 md:mb-6">
-                  Build next-gen digital products—venture studio, Web2, and Web3 solutions via one modern partner.
-                </p>
-                <div className="flex gap-3 md:gap-4">
-                  <a
-                    href="https://x.com/NovastaqHQ"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors"
-                  >
-                    <Twitter className="w-4 h-4 md:w-5 md:h-5" />
+                <img src="/logo.png" alt="Novastaq" className="h-8 w-auto mb-4 invert" />
+                <p className="text-gray-400 text-sm mb-6">Build next-gen digital products—venture studio, Web2, and Web3 solutions via one modern partner.</p>
+                <div className="flex gap-4">
+                  <a href="https://facebook.com/NovastaqHQ" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                    <Facebook className="w-5 h-5" />
+                  </a>
+                  <a href="https://x.com/NovastaqHQ?s=20" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                    <Twitter className="w-5 h-5" />
+                  </a>
+                  <a href="https://instagram.com/novastaq" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                    <Instagram className="w-5 h-5" />
                   </a>
                 </div>
               </div>
 
               <div>
-                <h4 className="text-gray-500 text-xs md:text-sm font-medium mb-3 md:mb-4 uppercase tracking-wider">Program</h4>
-                <ul className="space-y-2 md:space-y-3">
-                  {['Day 1', 'Day 2', 'Day 3', 'Day 4'].map((item) => (
-                    <li key={item}>
-                      <a href="#register" className="text-gray-300 hover:text-white transition-colors text-xs md:text-sm">
-                        {item}
-                      </a>
-                    </li>
+                <h4 className="text-gray-500 text-sm font-medium mb-4 uppercase tracking-wider">Company</h4>
+                <ul className="space-y-3">
+                  {['About', 'Contact', 'Careers'].map(item => (
+                    <li key={item}><a href="/" className="text-gray-300 hover:text-white transition-colors text-sm">{item}</a></li>
                   ))}
                 </ul>
               </div>
 
               <div>
-                <h4 className="text-gray-500 text-xs md:text-sm font-medium mb-3 md:mb-4 uppercase tracking-wider">Partners</h4>
-                <ul className="space-y-2 md:space-y-3">
-                  <li>
-                    <a href="https://x.com/NovastaqHQ" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors text-xs md:text-sm">
-                      Novastaq
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://x.com/DeezainaStudios" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors text-xs md:text-sm">
-                      Deezaina Studios
-                    </a>
-                  </li>
+                <h4 className="text-gray-500 text-sm font-medium mb-4 uppercase tracking-wider">Products</h4>
+                <ul className="space-y-3">
+                  {['Usetsara', 'Velcro', 'CriptPay', 'MyArteLab'].map(item => (
+                    <li key={item}><a href="/" className="text-gray-300 hover:text-white transition-colors text-sm">{item}</a></li>
+                  ))}
                 </ul>
               </div>
 
               <div>
-                <h4 className="text-gray-500 text-xs md:text-sm font-medium mb-3 md:mb-4 uppercase tracking-wider">Resources</h4>
-                <ul className="space-y-2 md:space-y-3">
-                  <li><a href="/" className="text-gray-300 hover:text-white transition-colors text-xs md:text-sm">Home</a></li>
-                  <li><a href="#register" className="text-gray-300 hover:text-white transition-colors text-xs md:text-sm">Register</a></li>
+                <h4 className="text-gray-500 text-sm font-medium mb-4 uppercase tracking-wider">Resources</h4>
+                <ul className="space-y-3">
+                  {['Blog', 'Documentation', 'Privacy', 'Terms'].map(item => (
+                    <li key={item}><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm">{item}</a></li>
+                  ))}
                 </ul>
               </div>
             </div>
 
-            <div className="pt-6 md:pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
-              <p className="text-gray-500 text-xs md:text-sm text-center md:text-left">
-                © {new Date().getFullYear()} Novastaq Technologies Inc. & Deezaina Studios. All rights reserved.
-              </p>
+            <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-gray-500 text-sm">© {new Date().getFullYear()} Novastaq Technologies Inc. All rights reserved.</p>
             </div>
           </div>
         </div>
