@@ -254,7 +254,7 @@ function FeaturesSection() {
             </div>
 
             <div className={`transition-all duration-700 delay-200 ${isIntersecting ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
-              <img src="/images/feature-card.png" alt="Feature Preview" className="w-full" />
+              {/* Feature image removed per request */}
             </div>
           </div>
         </div>
