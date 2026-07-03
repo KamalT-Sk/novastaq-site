@@ -115,7 +115,7 @@ export default function Bootcamp() {
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
-              Learn to build real digital products using AI tools—no coding experience required.
+              Learn to build real digital products using AI tools no coding experience required.
               Hosted by Novastaq in partnership with Deezaina Studios.
             </p>
 
