@@ -34,22 +34,14 @@ export default function Bootcamp() {
   }, []);
 
   const highlights = [
-    { icon: Calendar, label: '4 Days', desc: 'Intensive hands-on program' },
+    { icon: Calendar, label: '7 Days', desc: 'Intensive hands-on program' },
     { icon: Clock, label: 'Live Sessions', desc: 'Interactive daily workshops' },
     { icon: Users, label: 'Beginner Friendly', desc: 'No prior coding required' },
     { icon: Zap, label: 'Build with AI', desc: 'Create real projects using AI tools' },
   ];
 
-  const days = [
-    { day: '01', title: 'AI Foundations & Prompt Engineering', desc: 'Learn how to talk to AI effectively and leverage LLMs for ideation and planning.' },
-    { day: '02', title: 'No-Code & Low-Code Building', desc: 'Build functional web apps and automations without writing a single line of code.' },
-    { day: '03', title: 'AI-Assisted Development', desc: 'Use AI coding assistants to build real products faster than ever before.' },
-    { day: '04', title: 'Launch & Present', desc: 'Polish your project, prepare your demo, and present to the group.' },
-  ];
-
   const { ref: heroRef } = useIntersectionObserver();
   const { ref: formRef, isIntersecting: formVisible } = useIntersectionObserver();
-  const { ref: agendaRef, isIntersecting: agendaVisible } = useIntersectionObserver();
 
   return (
     <div className="min-h-screen bg-white">
@@ -113,7 +105,7 @@ export default function Bootcamp() {
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
-              4-Day Build with AI
+              7-Day Build with AI
               <br />
               <span className="text-gray-400">Bootcamp</span>
             </h1>
@@ -164,44 +156,6 @@ export default function Bootcamp() {
         </div>
       </section>
 
-      {/* Agenda Section */}
-      <section ref={agendaRef} className="py-16 md:py-24 bg-gray-50">
-        <div className="w-full px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto">
-            <div
-              className={`text-center mb-10 md:mb-16 transition-all duration-700 ${
-                agendaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
-              <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                What You&apos;ll Learn
-              </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
-                A carefully crafted 4-day curriculum designed to take you from zero to building with AI.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-4 md:gap-6">
-              {days.map((d, i) => (
-                <div
-                  key={d.day}
-                  className={`group p-5 md:p-6 rounded-2xl bg-white hover:shadow-xl transition-all duration-500 border border-gray-100 ${
-                    agendaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                  }`}
-                  style={{ transitionDelay: `${(i + 1) * 100}ms` }}
-                >
-                  <span className="text-gray-900 font-mono text-sm mb-2 md:mb-3 block">{d.day}</span>
-                  <h3 className="font-heading text-base md:text-lg font-semibold text-gray-900 mb-2">
-                    {d.title}
-                  </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{d.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Registration Section */}
       <section id="register" ref={formRef} className="py-16 md:py-24 bg-white">
         <div className="w-full px-6 lg:px-12">
@@ -226,7 +180,7 @@ export default function Bootcamp() {
                       <Calendar className="w-4 h-4 md:w-5 md:h-5 text-gray-600" />
                     </div>
                     <div>
-                      <p className="text-gray-900 font-medium text-sm md:text-base">4-Day Program</p>
+                      <p className="text-gray-900 font-medium text-sm md:text-base">7-Day Program</p>
                       <p className="text-gray-500 text-xs md:text-sm">Intensive hands-on workshops</p>
                     </div>
                   </div>
