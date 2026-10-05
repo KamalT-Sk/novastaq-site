@@ -1,27 +1,7 @@
 import { useState, useEffect } from 'react';
-import { ArrowRight, Calendar, Clock, Users, Zap, Twitter, Globe, Facebook, Instagram } from 'lucide-react';
-
-function useIntersectionObserver(options = {}) {
-  const [isIntersecting, setIsIntersecting] = useState(false);
-  const [ref, setRef] = useState<HTMLElement | null>(null);
-
-  useEffect(() => {
-    if (!ref) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsIntersecting(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1, ...options }
-    );
-    observer.observe(ref);
-    return () => observer.disconnect();
-  }, [ref, options]);
-
-  return { ref: setRef, isIntersecting };
-}
+import { ArrowRight, Calendar, Clock, Users, Zap, Twitter, Globe } from 'lucide-react';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import { Footer } from '@/components/Footer';
 
 const PAYMENT_LINK = 'https://usevelcro.com/pay/3903a520f71a';
 
@@ -50,7 +30,7 @@ export default function Bootcamp() {
         <div className="w-full px-6 lg:px-12">
           <div className="flex items-center justify-between h-16 lg:h-20">
             <a href="/" className="flex items-center gap-2">
-              <img src="/logo.png" alt="Novastaq" className="h-7 w-auto" />
+              <img src="/logo.png" alt="Novastaq Technologies Inc" className="h-7 w-auto" />
             </a>
             <a
               href="/"
@@ -79,7 +59,7 @@ export default function Bootcamp() {
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
-              <img src="/logo.png" alt="Novastaq" className="h-6 md:h-10 w-auto" />
+              <img src="/logo.png" alt="Novastaq Technologies Inc" className="h-6 md:h-10 w-auto" />
               <span className="text-gray-400 text-sm md:text-lg font-medium">×</span>
               <img
                 src="/deezaina-logo.png"
@@ -231,61 +211,7 @@ export default function Bootcamp() {
         </div>
       </section>
 
-      {/* Footer — matches homepage exactly */}
-      <footer className="py-16 bg-gray-900 text-white">
-        <div className="w-full px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-              <div className="col-span-2 md:col-span-1">
-                <img src="/logo.png" alt="Novastaq" className="h-8 w-auto mb-4 invert" />
-                <p className="text-gray-400 text-sm mb-6">Build next-gen digital products—venture studio, Web2, and Web3 solutions via one modern partner.</p>
-                <div className="flex gap-4">
-                  <a href="https://facebook.com/NovastaqHQ" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
-                    <Facebook className="w-5 h-5" />
-                  </a>
-                  <a href="https://x.com/NovastaqHQ?s=20" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
-                    <Twitter className="w-5 h-5" />
-                  </a>
-                  <a href="https://instagram.com/novastaq" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
-                    <Instagram className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
-
-              <div>
-                <h4 className="text-gray-500 text-sm font-medium mb-4 uppercase tracking-wider">Company</h4>
-                <ul className="space-y-3">
-                  {['About', 'Contact', 'Careers'].map(item => (
-                    <li key={item}><a href="/" className="text-gray-300 hover:text-white transition-colors text-sm">{item}</a></li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="text-gray-500 text-sm font-medium mb-4 uppercase tracking-wider">Products</h4>
-                <ul className="space-y-3">
-                  {['Usetsara', 'Velcro', 'CriptPay', 'MyArteLab'].map(item => (
-                    <li key={item}><a href="/" className="text-gray-300 hover:text-white transition-colors text-sm">{item}</a></li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="text-gray-500 text-sm font-medium mb-4 uppercase tracking-wider">Resources</h4>
-                <ul className="space-y-3">
-                  {['Blog', 'Documentation', 'Privacy', 'Terms'].map(item => (
-                    <li key={item}><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm">{item}</a></li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-gray-500 text-sm">© {new Date().getFullYear()} Novastaq Technologies Inc. All rights reserved.</p>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

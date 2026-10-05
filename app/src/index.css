@@ -7,24 +7,24 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
+    --foreground: 240 10% 4%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 240 10% 4%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
-    --primary: 0 0% 10%;
+    --popover-foreground: 240 10% 4%;
+    --primary: 240 10% 4%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 10%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
-    --accent: 0 0% 10%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 10% 4%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+    --accent: 234 56% 60%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 0 0% 10%;
+    --border: 0 0% 0% / 0.08;
+    --input: 0 0% 0% / 0.1;
+    --ring: 234 56% 60%;
     --radius: 0.75rem;
   }
 }
@@ -44,7 +44,8 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.022em;
   }
   
   code, pre, .mono {
@@ -95,16 +96,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #fafafa;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: #d4d4d8;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1;
+  background: #a1a1aa;
 }
 
 /* Smooth transitions */
@@ -160,4 +161,54 @@
 
 .animate-slide-infinite {
   animation: slide-infinite 25s linear infinite;
+}
+
+/* Design primitives: light, airy, one indigo accent */
+@layer components {
+  .eyebrow {
+    @apply flex items-center gap-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#0b0b0f] mb-5;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply block w-6 h-[2px] bg-[#4f46e5];
+  }
+  .text-center > .eyebrow {
+    justify-content: center;
+  }
+  .heading-xl {
+    @apply font-semibold tracking-[-0.04em] leading-[1.02] text-[#0b0b0f];
+  }
+  .heading-lg {
+    @apply text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-[-0.035em] leading-[1.06] text-[#0b0b0f];
+  }
+  .lead {
+    @apply text-[17px] leading-relaxed text-[#71717a];
+  }
+  .panel {
+    @apply rounded-2xl border border-black/[0.08] bg-white;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-1.5 h-11 px-5 rounded-full bg-[#0b0b0f] text-white text-sm font-medium hover:bg-[#27272a] transition-colors;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-1.5 h-11 px-5 rounded-full border border-black/10 bg-white text-[#0b0b0f] text-sm font-medium hover:bg-[#fafafa] transition-colors;
+  }
+  .glow {
+    background: radial-gradient(50% 55% at 50% 0%, rgba(79, 70, 229, 0.08), transparent 70%);
+  }
+  .dots {
+    background-image: radial-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+}
+
+/* Gentle bob for floating badges; still for people who ask for less motion */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-float, .animate-slide-infinite, .animate-slide-right-slow, .animate-slide-left-slow { animation: none; }
 }
