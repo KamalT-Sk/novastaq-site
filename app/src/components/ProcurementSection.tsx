@@ -2,8 +2,8 @@ import { Smartphone, Laptop, Headphones, Router, Truck, Building2, User, ArrowRi
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { Link } from 'react-router-dom';
 
-// Set to 'https://store.novastaq.com' when the store goes live; null shows "Coming soon".
-export const STORE_URL: string | null = null;
+// The online store. Set to null to show "Coming soon" instead.
+export const STORE_URL: string | null = 'https://store.novastaq.com';
 
 const categories = [
   { icon: Smartphone, title: 'Phones', description: 'iPhone, Samsung, Pixel and more' },

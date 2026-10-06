@@ -1,217 +1,112 @@
-import { useState, useEffect } from 'react';
-import { ArrowRight, Calendar, Clock, Users, Zap, Twitter, Globe } from 'lucide-react';
+import { ArrowRight, Calendar, Video, Sparkles, Wand2, Check } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
-import { Footer } from '@/components/Footer';
 
 const PAYMENT_LINK = 'https://usevelcro.com/pay/3903a520f71a';
 
+const highlights = [
+  { icon: Calendar, title: '7 days', text: 'An intensive, hands-on program you can finish in a week.' },
+  { icon: Video, title: 'Live sessions', text: 'Interactive daily workshops, with time for your questions.' },
+  { icon: Sparkles, title: 'Beginner friendly', text: 'No coding experience needed. We start from zero.' },
+  { icon: Wand2, title: 'Build with AI', text: 'Create real projects using today’s AI tools.' },
+];
+
+const forYou = [
+  'You have an idea for an app, website or digital product',
+  "You've never written code, or you're just starting out",
+  'You want to use AI tools to build faster',
+  'You want something real to show at the end of the week',
+];
+
 export default function Bootcamp() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-    window.scrollTo(0, 0);
-  }, []);
-
-  const highlights = [
-    { icon: Calendar, label: '7 Days', desc: 'Intensive hands-on program' },
-    { icon: Clock, label: 'Live Sessions', desc: 'Interactive daily workshops' },
-    { icon: Users, label: 'Beginner Friendly', desc: 'No prior coding required' },
-    { icon: Zap, label: 'Build with AI', desc: 'Create real projects using AI tools' },
-  ];
-
-  const { ref: heroRef } = useIntersectionObserver();
-  const { ref: formRef, isIntersecting: formVisible } = useIntersectionObserver();
+  const { ref, isIntersecting } = useIntersectionObserver();
+  const reveal = isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6';
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl shadow-sm">
-        <div className="w-full px-6 lg:px-12">
-          <div className="flex items-center justify-between h-16 lg:h-20">
-            <a href="/" className="flex items-center gap-2">
-              <img src="/logo.png" alt="Novastaq Technologies Inc" className="h-7 w-auto" />
-            </a>
-            <a
-              href="/"
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              Back to Home
-            </a>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-white"
-      >
-        <div className="absolute inset-0 z-0">
-          <img src="/images/hero-bg-cool.png" alt="" className="w-full h-full object-cover opacity-30" />
-        </div>
-
-        <div className="relative z-10 w-full px-6 lg:px-12 pt-28 md:pt-24 pb-16">
-          <div className="max-w-5xl mx-auto">
-            {/* Partner Logos */}
-            <div
-              className={`flex flex-row items-center justify-center gap-3 md:gap-10 mb-8 md:mb-12 transition-all duration-1000 ${
-                isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
-              <img src="/logo.png" alt="Novastaq Technologies Inc" className="h-6 md:h-10 w-auto" />
-              <span className="text-gray-400 text-sm md:text-lg font-medium">×</span>
-              <img
-                src="/deezaina-logo.png"
-                alt="Deezaina Studios"
-                className="h-6 md:h-10 w-auto"
-              />
-            </div>
-
-            {/* Badge */}
-            <div
-              className={`text-center mb-6 transition-all duration-1000 delay-100 ${
-                isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
-              <span className="inline-block px-4 py-2 rounded-full bg-gray-100 text-gray-600 text-xs md:text-sm font-medium">
-                Limited Spots Available
-              </span>
-            </div>
-
-            {/* Headline */}
-            <h1
-              className={`font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 text-center leading-tight mb-4 md:mb-6 transition-all duration-1000 delay-200 ${
-                isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
-              7-Day Build with AI
-              <br />
-              <span className="text-gray-400">Bootcamp</span>
-            </h1>
-
-            <p
-              className={`text-base md:text-lg text-gray-600 text-center max-w-xl mx-auto mb-8 md:mb-12 px-2 sm:px-0 transition-all duration-1000 delay-300 ${
-                isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
-              Learn to build real digital products using AI tools no coding experience required.
+    <div className="pt-16">
+      <section className="py-20 md:py-28">
+        <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-end">
+          <div>
+            <p className="eyebrow">Bootcamp</p>
+            <h1 className="heading-xl text-5xl sm:text-6xl lg:text-[72px] mb-6">7-Day Build<br />with AI.</h1>
+            <p className="lead max-w-xl mb-10">
+              Learn to build real digital products using AI tools, with no coding experience required.
               Hosted by Novastaq in partnership with Deezaina Studios.
             </p>
-
-            {/* Highlights */}
-            <div
-              className={`grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-3xl mx-auto mb-8 md:mb-12 transition-all duration-1000 delay-400 ${
-                isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
-              {highlights.map((h) => (
-                <div
-                  key={h.label}
-                  className="text-center p-3 md:p-4 rounded-2xl bg-white/80 backdrop-blur-sm shadow-sm border border-gray-100"
-                >
-                  <h.icon className="w-5 h-5 md:w-6 md:h-6 text-gray-900 mx-auto mb-2" />
-                  <p className="text-gray-900 font-semibold text-xs md:text-sm">{h.label}</p>
-                  <p className="text-gray-500 text-[10px] md:text-xs mt-1">{h.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <div
-              className={`flex justify-center transition-all duration-1000 delay-500 ${
-                isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
-              <a
-                href={PAYMENT_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-gray-900 text-white hover:bg-gray-800 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-sm transition-colors"
-              >
-                Register Now <ArrowRight className="w-4 h-4" />
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a href={PAYMENT_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary group">
+                Register now <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </a>
+              <a href="#details" className="btn-secondary">What you&apos;ll get</a>
             </div>
+            <p className="mt-6 text-[13px] text-[#71717a]">Limited spots available.</p>
+          </div>
+
+          <div className="panel p-8">
+            <p className="text-[13px] font-medium text-[#71717a] mb-6">In partnership</p>
+            <div className="flex items-center gap-5 mb-8">
+              <img src="/logo.png" alt="Novastaq Technologies Inc" className="h-7 w-auto" />
+              <span className="text-[#a1a1aa] text-xl">×</span>
+              <img src="/deezaina-logo.png" alt="Deezaina Studios" className="h-8 w-auto" />
+            </div>
+            <ul className="space-y-3 pt-6 border-t border-black/[0.06]">
+              {['7 days, live and online', 'Beginner friendly', 'Real projects, built with AI'].map((t) => (
+                <li key={t} className="flex items-center gap-2.5 text-[15px] text-[#3f3f46]">
+                  <Check className="w-4 h-4 text-[#4f46e5] shrink-0" strokeWidth={2.25} /> {t}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
 
-      {/* Registration Section */}
-      <section id="register" ref={formRef} className="py-16 md:py-24 bg-white">
-        <div className="w-full px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-start">
-              {/* Left: Info */}
-              <div
-                className={`transition-all duration-700 ${
-                  formVisible ? 'opacity-100 translate-y-0 lg:translate-x-0' : 'opacity-0 translate-y-8 lg:-translate-x-8'
-                }`}
-              >
-                <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                  Secure Your Spot
-                </h2>
-                <p className="text-gray-600 mb-8 text-sm md:text-base">
-                  Click the button to access the payment link. Your details will be collected seamlessly during checkout.
-                </p>
-
-                <div className="space-y-5 md:space-y-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-100 flex items-center justify-center flex-shrink-0">
-                      <Calendar className="w-4 h-4 md:w-5 md:h-5 text-gray-600" />
-                    </div>
-                    <div>
-                      <p className="text-gray-900 font-medium text-sm md:text-base">7-Day Program</p>
-                      <p className="text-gray-500 text-xs md:text-sm">Intensive hands-on workshops</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-100 flex items-center justify-center flex-shrink-0">
-                      <Globe className="w-4 h-4 md:w-5 md:h-5 text-gray-600" />
-                    </div>
-                    <div>
-                      <p className="text-gray-900 font-medium text-sm md:text-base">Follow for Updates</p>
-                      <div className="flex flex-wrap gap-2 md:gap-3 mt-1">
-                        <a
-                          href="https://x.com/NovastaqHQ"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-gray-600 hover:text-gray-900 transition-colors text-xs md:text-sm"
-                        >
-                          <Twitter className="w-3.5 h-3.5 md:w-4 md:h-4" /> @NovastaqHQ
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      <section id="details" ref={ref} className="py-24 border-t border-black/[0.06] bg-[#fafafa] scroll-mt-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className={`max-w-2xl mb-14 transition-all duration-700 ${reveal}`}>
+            <p className="eyebrow">What you get</p>
+            <h2 className="heading-lg">A week that ends with something you built.</h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {highlights.map((h, i) => (
+              <div key={h.title} className={`panel p-7 transition-all duration-700 ${reveal}`} style={{ transitionDelay: `${i * 80}ms` }}>
+                <span className="w-11 h-11 rounded-xl bg-[#f4f4f5] flex items-center justify-center mb-6">
+                  <h.icon className="w-5 h-5 text-[#0b0b0f]" strokeWidth={1.75} />
+                </span>
+                <h3 className="text-[17px] font-semibold text-[#0b0b0f] mb-2">{h.title}</h3>
+                <p className="text-[15px] leading-relaxed text-[#71717a]">{h.text}</p>
               </div>
-
-              {/* Right: Payment Link */}
-              <div
-                className={`transition-all duration-700 delay-200 ${
-                  formVisible ? 'opacity-100 translate-y-0 lg:translate-x-0' : 'opacity-0 translate-y-8 lg:translate-x-8'
-                }`}
-              >
-                <div className="p-6 md:p-8 rounded-3xl bg-gray-50 flex flex-col items-center justify-center min-h-[300px] text-center">
-                  <h3 className="font-heading text-xl md:text-2xl font-bold text-gray-900 mb-4">
-                    Ready to Build?
-                  </h3>
-                  <a
-                    href={PAYMENT_LINK}
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-semibold transition-colors"
-                  >
-                    Proceed to Payment <ArrowRight className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <Footer />
+      <section className="py-24 border-t border-black/[0.06]">
+        <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-20">
+          <div>
+            <p className="eyebrow">Who it&apos;s for</p>
+            <h2 className="heading-lg">This bootcamp is for you if…</h2>
+          </div>
+          <ul className="divide-y divide-black/[0.06] border-y border-black/[0.06]">
+            {forYou.map((t) => (
+              <li key={t} className="flex items-start gap-3 py-5 text-[16px] text-[#3f3f46]">
+                <Check className="w-5 h-5 text-[#4f46e5] shrink-0 mt-0.5" strokeWidth={2.25} /> {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="rounded-[28px] bg-[#0b0b0f] px-6 py-16 md:py-20 text-center">
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-[-0.035em] text-white mb-5">Secure your spot.</h2>
+            <p className="text-[17px] text-white/60 max-w-lg mx-auto mb-10">Register through our secure payment page. Your details are collected at checkout, and we&apos;ll be in touch before day one.</p>
+            <a href={PAYMENT_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 h-11 px-6 rounded-full bg-white text-[#0b0b0f] text-sm font-medium hover:bg-white/90 transition-colors group">
+              Proceed to payment <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </a>
+            <p className="text-[13px] text-white/40 mt-6">Questions? <a href="https://wa.me/2348150533325" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Chat with us on WhatsApp</a>.</p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

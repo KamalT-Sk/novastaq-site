@@ -76,7 +76,12 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-black/[0.06] flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <p className="text-[13px] text-[#a1a1aa]">© {new Date().getFullYear()} Novastaq Technologies Inc. All rights reserved.</p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <p className="text-[13px] text-[#a1a1aa]">© {new Date().getFullYear()} Novastaq Technologies Inc. All rights reserved.</p>
+            {[['Terms', '/terms'], ['Privacy', '/privacy'], ['Refunds & Returns', '/returns']].map(([label, to]) => (
+              <Link key={to} to={to} className={link}>{label}</Link>
+            ))}
+          </div>
           <div className="flex gap-6">
             {socials.map(([name, url]) => (
               <a key={name} href={url} target="_blank" rel="noopener noreferrer" className={link}>{name}</a>

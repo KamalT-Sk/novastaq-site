@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Mail, Facebook, Twitter, Instagram, ArrowRight, CheckCircle2, Clock, MessageSquare } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { Field, Choices, inputCls, EMAIL_RE } from '@/components/form';
+import { sendForm, INBOX, type SendResult } from '@/lib/sendForm';
 import { WhatsAppIcon, WHATSAPP_URL } from '@/components/whatsapp';
 
 const SERVICES = [
@@ -20,11 +21,12 @@ type Errors = Partial<Record<'name' | 'email' | 'message', string>>;
 export function ContactSection() {
   const { ref, isIntersecting } = useIntersectionObserver();
   const [errors, setErrors] = useState<Errors>({});
-  const [sentTo, setSentTo] = useState<string | null>(null);
+  const [sent, setSent] = useState<{ to: string; via: SendResult } | null>(null);
+  const [sending, setSending] = useState(false);
   const [params] = useSearchParams();
   const preset = SERVICES.find(([v]) => v === params.get('service'))?.[0] ?? 'software';
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
@@ -45,13 +47,14 @@ export function ContactSection() {
       return;
     }
 
-    // ponytail: mailto until a form backend exists; swap this for a POST when it does
-    const subject = encodeURIComponent(`${service}: enquiry from ${name}${company ? ` (${company})` : ''}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone/WhatsApp: ${phone || 'Not given'}\nCompany: ${company || 'Not given'}\nService: ${service}\nBudget: ${budget}\n\n${message}`,
+    setSending(true);
+    const result = await sendForm(
+      `${service}: enquiry from ${name}${company ? ` (${company})` : ''}`,
+      { Name: name, Email: email, 'Phone/WhatsApp': phone || 'Not given', Company: company || 'Not given', Service: service, Budget: budget, Message: message },
+      email,
     );
-    window.open(`mailto:hello@novastaq.com?subject=${subject}&body=${body}`, '_self');
-    setSentTo(email);
+    setSending(false);
+    setSent({ to: email, via: result });
     form.reset();
   };
 
@@ -104,15 +107,26 @@ export function ContactSection() {
           </div>
         </div>
 
-        {sentTo ? (
+        {sent ? (
           <div className={`panel p-8 md:p-10 flex flex-col justify-center transition-all duration-700 ${reveal}`} role="status">
             <CheckCircle2 className="w-8 h-8 text-[#0b0b0f] mb-6" strokeWidth={1.5} />
-            <h3 className="text-2xl font-semibold tracking-[-0.02em] text-[#0b0b0f] mb-3">Almost there.</h3>
-            <p className="text-[15px] leading-relaxed text-[#71717a] mb-8">
-              Your email app should have opened with your message ready. Press send, and we&apos;ll reply to <span className="text-[#0b0b0f]">{sentTo}</span> within 48 hours.
-              If nothing opened, email us directly at <a href="mailto:hello@novastaq.com" className="text-[#0b0b0f] underline underline-offset-4">hello@novastaq.com</a>.
-            </p>
-            <button onClick={() => setSentTo(null)} className="btn-secondary self-start">Send another message</button>
+            {sent.via === 'sent' ? (
+              <>
+                <h3 className="text-2xl font-semibold tracking-[-0.02em] text-[#0b0b0f] mb-3">Message sent.</h3>
+                <p className="text-[15px] leading-relaxed text-[#71717a] mb-8">
+                  Thanks! We&apos;ll reply to <span className="text-[#0b0b0f]">{sent.to}</span> within 48 hours.
+                </p>
+              </>
+            ) : (
+              <>
+                <h3 className="text-2xl font-semibold tracking-[-0.02em] text-[#0b0b0f] mb-3">Almost there.</h3>
+                <p className="text-[15px] leading-relaxed text-[#71717a] mb-8">
+                  Your email app should have opened with your message ready. Press send, and we&apos;ll reply to <span className="text-[#0b0b0f]">{sent.to}</span> within 48 hours.
+                  If nothing opened, email us directly at <a href={`mailto:${INBOX}`} className="text-[#0b0b0f] underline underline-offset-4">{INBOX}</a>.
+                </p>
+              </>
+            )}
+            <button onClick={() => setSent(null)} className="btn-secondary self-start">Send another message</button>
           </div>
         ) : (
           <form key={preset} onSubmit={handleSubmit} noValidate className={`panel p-6 md:p-8 space-y-6 transition-all duration-700 delay-150 ${reveal}`}>
@@ -140,8 +154,8 @@ export function ContactSection() {
 
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
               <p className="text-[12px] text-[#a1a1aa] max-w-xs">We only use your details to reply to you.</p>
-              <button type="submit" className="btn-primary group">
-                Send message <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              <button type="submit" disabled={sending} className="btn-primary group disabled:opacity-60">
+                {sending ? 'Sending…' : 'Send message'} <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
             </div>
           </form>

@@ -11,6 +11,7 @@ import Contact from './pages/Contact.tsx'
 import Referral from './pages/Referral.tsx'
 import Careers from './pages/Careers.tsx'
 import ServiceDetail from './pages/ServiceDetail.tsx'
+import { Terms, Privacy, Returns } from './pages/Legal.tsx'
 import Bootcamp from './pages/Bootcamp.tsx'
 
 createRoot(document.getElementById('root')!).render(
@@ -27,8 +28,11 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/contact" element={<Contact />} />
           <Route path="/refer" element={<Referral />} />
           <Route path="/careers" element={<Careers />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/returns" element={<Returns />} />
+          <Route path="/bootcamp" element={<Bootcamp />} />
         </Route>
-        <Route path="/bootcamp" element={<Bootcamp />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

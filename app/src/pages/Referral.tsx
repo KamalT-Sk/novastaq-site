@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Field, inputCls, EMAIL_RE } from '@/components/form';
+import { sendForm, type SendResult } from '@/lib/sendForm';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 // Referrers earn a share of the contract they bring in.
@@ -22,10 +23,10 @@ const faqs = [
 
 
 export default function Referral() {
-  const [sent, setSent] = useState(false);
+  const [sent, setSent] = useState<SendResult | null>(null);
   const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
@@ -39,14 +40,7 @@ export default function Referral() {
       form.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();
       return;
     }
-    // ponytail: mailto until there is a backend that issues links automatically
-    const body = encodeURIComponent(`Name: ${name}
-Email: ${email}
-Phone/WhatsApp: ${phone || 'Not given'}
-
-Please send me my Novastaq referral link.`);
-    window.open(`mailto:hello@novastaq.com?subject=${encodeURIComponent('Referral program sign-up')}&body=${body}`, '_self');
-    setSent(true);
+    setSent(await sendForm('Referral program sign-up', { Name: name, Email: email, 'Phone/WhatsApp': phone || 'Not given', Request: 'Please send me my Novastaq referral link.' }, email));
   };
 
   return (
@@ -95,7 +89,7 @@ Please send me my Novastaq referral link.`);
             <div className="panel p-8 flex flex-col justify-center" role="status">
               <CheckCircle2 className="w-8 h-8 text-[#0b0b0f] mb-6" strokeWidth={1.5} />
               <p className="text-xl font-semibold text-[#0b0b0f] mb-2">Thanks, you&apos;re in.</p>
-              <p className="text-[15px] text-[#71717a]">Send the email that just opened, and we&apos;ll reply with your referral link within 48 hours.</p>
+              <p className="text-[15px] text-[#71717a]">{sent === 'sent' ? "We'll email your referral link within 48 hours." : "Send the email that just opened, and we'll reply with your referral link within 48 hours."}</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} noValidate className="panel p-6 md:p-8 space-y-5">
