@@ -52,6 +52,7 @@ export function ContactSection() {
       `${service}: enquiry from ${name}${company ? ` (${company})` : ''}`,
       { Name: name, Email: email, 'Phone/WhatsApp': phone || 'Not given', Company: company || 'Not given', Service: service, Budget: budget, Message: message },
       email,
+      get('website'),
     );
     setSending(false);
     setSent({ to: email, via: result });
@@ -129,7 +130,9 @@ export function ContactSection() {
             <button onClick={() => setSent(null)} className="btn-secondary self-start">Send another message</button>
           </div>
         ) : (
-          <form key={preset} onSubmit={handleSubmit} noValidate className={`panel p-6 md:p-8 space-y-6 transition-all duration-700 delay-150 ${reveal}`}>
+          <form key={preset} onSubmit={handleSubmit} noValidate className={`relative panel p-6 md:p-8 space-y-6 transition-all duration-700 delay-150 ${reveal}`}>
+            {/* spam trap: hidden from people, bots fill it in */}
+            <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] w-px h-px opacity-0" />
             <div className="grid sm:grid-cols-2 gap-5">
               <Field id="contact-name" label="Name" error={errors.name}>
                 <input id="contact-name" name="name" autoComplete="name" onInput={clear('name')} aria-invalid={!!errors.name} aria-describedby={errors.name ? 'contact-name-error' : undefined} className={inputCls} placeholder="Ada Okafor" />

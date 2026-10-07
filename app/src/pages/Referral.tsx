@@ -40,7 +40,7 @@ export default function Referral() {
       form.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();
       return;
     }
-    setSent(await sendForm('Referral program sign-up', { Name: name, Email: email, 'Phone/WhatsApp': phone || 'Not given', Request: 'Please send me my Novastaq referral link.' }, email));
+    setSent(await sendForm('Referral program sign-up', { Name: name, Email: email, 'Phone/WhatsApp': phone || 'Not given', Request: 'Please send me my Novastaq referral link.' }, email, get('website')));
   };
 
   return (
@@ -92,7 +92,9 @@ export default function Referral() {
               <p className="text-[15px] text-[#71717a]">{sent === 'sent' ? "We'll email your referral link within 48 hours." : "Send the email that just opened, and we'll reply with your referral link within 48 hours."}</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} noValidate className="panel p-6 md:p-8 space-y-5">
+            <form onSubmit={handleSubmit} noValidate className="relative panel p-6 md:p-8 space-y-5">
+              {/* spam trap: hidden from people, bots fill it in */}
+              <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] w-px h-px opacity-0" />
               <Field id="ref-name" label="Full name" error={errors.name}>
                 <input id="ref-name" name="name" autoComplete="name" aria-invalid={!!errors.name} aria-describedby={errors.name ? 'ref-name-error' : undefined} onInput={() => errors.name && setErrors((x) => ({ ...x, name: undefined }))} className={inputCls} placeholder="Ada Okafor" />
               </Field>
