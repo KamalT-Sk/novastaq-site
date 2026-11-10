@@ -1,8 +1,82 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
+
+  # 1. Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # 2. Content Negotiation: Serve Markdown when agent requests Accept: text/markdown
+  RewriteCond %{HTTP:Accept} text/markdown [NC]
+  RewriteCond %{REQUEST_URI} ^/(index\.html)?$
+  RewriteRule ^ index.md [L]
+
+  # 3. If requested URI is an existing physical file or directory, serve it directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 4. Valid client-side SPA routes that rewrite to index.html with 200 OK
+  RewriteCond %{REQUEST_URI} ^/(services(/.*)?|procurement|work|about|contact|refer|careers|terms|privacy|returns|bootcamp)?$ [NC]
+  RewriteRule ^ index.html [L]
+
+  # 5. Return real HTTP 404 for any other missing file or route
+  RewriteRule ^ - [R=404,L]
+</IfModule>
+
+ErrorDocument 404 /404.html
+
+<IfModule mod_mime.c>
+  AddType text/plain .txt
+  AddType text/markdown .md
+  AddType application/json .json
+  AddType application/xml .xml
+</IfModule>
+
+<IfModule mod_headers.c>
+  # 1. Content Signals: declare how content may be used by AI & automated agents
+  Header set Content-Signal "search=yes, ai-train=no"
+
+  # 10. RFC 8288 Link header advertising llms.txt and machine-readable alternates
+  Header append Link '</llms.txt>; rel="alternate"; type="text/markdown", </llms.txt>; rel="describedby"; type="text/plain", </.well-known/mcp/server-card.json>; rel="service-desc"; type="application/json"'
+
+  # Security headers
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+  # Ensure llms.txt is always served as plain text with UTF-8
+  <Files "llms.txt">
+    ForceType text/plain
+    Header set Content-Type "text/plain; charset=utf-8"
+    Header set Access-Control-Allow-Origin "*"
+  </Files>
+
+  <Files "llms-full.txt">
+    ForceType text/plain
+    Header set Content-Type "text/plain; charset=utf-8"
+    Header set Access-Control-Allow-Origin "*"
+  </Files>
+
+  # Ensure Markdown representation is served with text/markdown
+  <Files "index.md">
+    ForceType text/markdown
+    Header set Content-Type "text/markdown; charset=utf-8"
+    Header set Vary "Accept"
+    Header set Access-Control-Allow-Origin "*"
+  </Files>
+
+  # Ensure MCP Server Card is served with application/json
+  <Files "server-card.json">
+    ForceType application/json
+    Header set Content-Type "application/json; charset=utf-8"
+    Header set Access-Control-Allow-Origin "*"
+  </Files>
+
+  <Files "robots.txt">
+    ForceType text/plain
+    Header set Content-Type "text/plain; charset=utf-8"
+  </Files>
 </IfModule>

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Content Signals: specifies how automated agents & AI may use content
+Content-Signal: search=yes, ai-train=no
+
+# Agent documentation & sitemaps
+Sitemap: https://novastaq.com/sitemap.xml

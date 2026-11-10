@@ -8,6 +8,7 @@
     <title>Novastaq Technologies Inc | Software, Web3 &amp; Tech Procurement</title>
     <meta name="description" content="Novastaq Technologies Inc designs, builds and scales digital products (web and mobile apps, fintech and Web3 infrastructure) and supplies phones, laptops and gadgets to businesses and individuals in Nigeria." />
     <link rel="canonical" href="https://novastaq.com/" />
+    <meta name="content-signal" content="search=yes, ai-train=no" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -26,15 +27,317 @@
     <meta name="twitter:description" content="Software, Web3 and tech procurement. Build fast, scale further." />
     <meta name="twitter:image" content="https://novastaq.com/og-image.png" />
 
+    <!-- Machine-Readable Alternate Links (RFC 8288) -->
+    <link rel="alternate" type="text/markdown" href="https://novastaq.com/llms.txt" title="LLM Summary (llms.txt)" />
+    <link rel="alternate" type="text/markdown" href="https://novastaq.com/index.md" title="Markdown Homepage" />
+    <link rel="describedby" type="text/plain" href="https://novastaq.com/llms.txt" />
+    <link rel="service-desc" type="application/json" href="https://novastaq.com/.well-known/mcp/server-card.json" />
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/logo.png" />
 
     <!-- Font preconnect for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Structured Data (JSON-LD) covering Organization, WebSite, WebPage, Services, Products, FAQs & Breadcrumbs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://novastaq.com/#organization",
+          "name": "Novastaq Technologies Inc",
+          "legalName": "Novastaq Technologies Inc",
+          "alternateName": ["Novastaq", "NovastaqHQ"],
+          "url": "https://novastaq.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://novastaq.com/logo.png"
+          },
+          "image": "https://novastaq.com/og-image.png",
+          "description": "Novastaq Technologies Inc designs, builds, and scales digital products (web and mobile apps, fintech payment systems, Web3 and blockchain infrastructure) and procures genuine phones, laptops, and gadgets in Nigeria.",
+          "telephone": "+2348150533325",
+          "email": "hello@novastaq.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Lagos",
+            "addressLocality": "Lagos",
+            "addressRegion": "Lagos State",
+            "postalCode": "100001",
+            "addressCountry": "NG"
+          },
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+2348150533325",
+              "contactType": "customer service",
+              "email": "hello@novastaq.com",
+              "availableLanguage": ["en"],
+              "areaServed": ["NG", "Worldwide"]
+            }
+          ],
+          "sameAs": [
+            "https://x.com/NovastaqHQ",
+            "https://instagram.com/novastaq",
+            "https://facebook.com/NovastaqHQ",
+            "https://wa.me/2348150533325",
+            "https://store.novastaq.com"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://novastaq.com/#website",
+          "url": "https://novastaq.com",
+          "name": "Novastaq Technologies Inc",
+          "description": "Software, Web3 & Tech Procurement",
+          "publisher": {
+            "@id": "https://novastaq.com/#organization"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://novastaq.com/#webpage",
+          "url": "https://novastaq.com/",
+          "name": "Novastaq Technologies Inc | Software, Web3 & Tech Procurement",
+          "isPartOf": {
+            "@id": "https://novastaq.com/#website"
+          },
+          "about": {
+            "@id": "https://novastaq.com/#organization"
+          },
+          "description": "Novastaq Technologies Inc designs, builds and scales digital products and supplies phones, laptops and gadgets in Nigeria."
+        },
+        {
+          "@type": "Service",
+          "@id": "https://novastaq.com/#service-product-development",
+          "name": "Product Development (Web & Mobile)",
+          "serviceType": "Software Engineering",
+          "provider": {
+            "@id": "https://novastaq.com/#organization"
+          },
+          "description": "Custom full-stack web and mobile application engineering from MVP to enterprise scale using React, TypeScript, Flutter, Go, Python, and Laravel.",
+          "url": "https://novastaq.com/services/product-development"
+        },
+        {
+          "@type": "Service",
+          "@id": "https://novastaq.com/#service-fintech",
+          "name": "Fintech & Payment Systems",
+          "serviceType": "Financial Technology Infrastructure",
+          "provider": {
+            "@id": "https://novastaq.com/#organization"
+          },
+          "description": "Payment gateway integrations (Paystack, Nomba, Tsara, Stripe), automated bank transfer verification, virtual accounts, wallet systems, and settlement pipelines.",
+          "url": "https://novastaq.com/services/fintech"
+        },
+        {
+          "@type": "Service",
+          "@id": "https://novastaq.com/#service-web3",
+          "name": "Web3 & Blockchain Infrastructure",
+          "serviceType": "Blockchain Development",
+          "provider": {
+            "@id": "https://novastaq.com/#organization"
+          },
+          "description": "Smart contract engineering (Solidity/Rust) for EVM and Solana, Real World Asset (RWA) tokenization, non-custodial wallets, and security audits.",
+          "url": "https://novastaq.com/services/web3"
+        },
+        {
+          "@type": "Product",
+          "@id": "https://novastaq.com/#product-procurement",
+          "name": "Workplace Tech Procurement (Phones, Laptops & Gadgets)",
+          "category": "Technology Hardware",
+          "description": "Genuine smartphones (iPhone, Samsung, Pixel), laptops (MacBook, ThinkPad, Dell, HP), and office accessories delivered nationwide across Nigeria.",
+          "url": "https://novastaq.com/procurement",
+          "brand": {
+            "@type": "Brand",
+            "name": "Novastaq"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "NGN",
+            "lowPrice": "10000",
+            "offerCount": "100",
+            "availability": "https://schema.org/InStock",
+            "seller": {
+              "@id": "https://novastaq.com/#organization"
+            }
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://novastaq.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What does Novastaq do?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Novastaq designs, builds and scales digital products: web and mobile apps, fintech and payment systems, and Web3 infrastructure. We also supply phones, laptops and other tech to businesses and individuals."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long does it take to build a product?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It depends on scope. After a short discovery call, we give you an honest timeline, milestone schedule, and quote."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you work with early-stage startups?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Our venture studio works with founders from idea to launch, and keeps working with them as they scale."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I buy a single device, or only in bulk?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Both. We sell to individuals and businesses, from one phone to a full corporate fleet office setup."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you deliver across Nigeria?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. We deliver orders directly to your home or office, wherever you are in Nigeria."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://novastaq.com/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://novastaq.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Services",
+              "item": "https://novastaq.com/services"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Procurement",
+              "item": "https://novastaq.com/procurement"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "About",
+              "item": "https://novastaq.com/about"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "Contact",
+              "item": "https://novastaq.com/contact"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Semantic static fallback rendered for search engines and AI agents before client hydration -->
+      <header style="padding:16px 24px;border-bottom:1px solid #e4e4e7;max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;">
+        <a href="/" style="font-weight:700;font-size:18px;color:#0b0b0f;text-decoration:none;">Novastaq Technologies Inc</a>
+        <nav aria-label="Main navigation">
+          <a href="/services" style="margin:0 12px;color:#52525b;text-decoration:none;">Services</a>
+          <a href="/procurement" style="margin:0 12px;color:#52525b;text-decoration:none;">Procurement</a>
+          <a href="/about" style="margin:0 12px;color:#52525b;text-decoration:none;">About</a>
+          <a href="/contact" style="margin:0 12px;color:#52525b;text-decoration:none;">Contact</a>
+        </nav>
+      </header>
+
+      <main style="max-width:1120px;margin:40px auto;padding:0 24px;">
+        <section style="margin-bottom:48px;">
+          <h1 style="font-size:2.5rem;font-weight:700;letter-spacing:-0.03em;color:#0b0b0f;margin-bottom:16px;">
+            Software, Web3 &amp; Tech Procurement
+          </h1>
+          <p style="font-size:1.2rem;line-height:1.6;color:#52525b;max-width:680px;margin-bottom:24px;">
+            Novastaq Technologies Inc designs, builds, and scales digital products (web and mobile apps, fintech payment systems, Web3 infrastructure) and supplies phones, laptops, and gadgets across Nigeria.
+          </p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="/contact" style="display:inline-block;padding:10px 20px;background:#0b0b0f;color:#ffffff;text-decoration:none;border-radius:6px;font-size:14px;font-weight:600;">Request a Quote</a>
+            <a href="/procurement" style="display:inline-block;padding:10px 20px;background:#f4f4f5;color:#0b0b0f;text-decoration:none;border-radius:6px;font-size:14px;font-weight:600;">Device Procurement</a>
+            <a href="/about" style="display:inline-block;padding:10px 20px;background:#f4f4f5;color:#0b0b0f;text-decoration:none;border-radius:6px;font-size:14px;font-weight:600;">About Novastaq</a>
+          </div>
+        </section>
+
+        <section style="margin-bottom:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;">
+          <div style="border:1px solid #e4e4e7;border-radius:12px;padding:24px;">
+            <h2 style="font-size:1.15rem;font-weight:600;margin-bottom:8px;"><a href="/services/product-development" style="color:#0b0b0f;text-decoration:none;">Product Development</a></h2>
+            <p style="font-size:0.95rem;color:#71717a;line-height:1.5;">Custom full-stack web and mobile apps built to scale from MVP to millions of users.</p>
+          </div>
+          <div style="border:1px solid #e4e4e7;border-radius:12px;padding:24px;">
+            <h2 style="font-size:1.15rem;font-weight:600;margin-bottom:8px;"><a href="/services/fintech" style="color:#0b0b0f;text-decoration:none;">Fintech &amp; Payments</a></h2>
+            <p style="font-size:0.95rem;color:#71717a;line-height:1.5;">Payment gateways, automated transfer verification, virtual accounts, and wallet engines.</p>
+          </div>
+          <div style="border:1px solid #e4e4e7;border-radius:12px;padding:24px;">
+            <h2 style="font-size:1.15rem;font-weight:600;margin-bottom:8px;"><a href="/services/web3" style="color:#0b0b0f;text-decoration:none;">Web3 &amp; Blockchain</a></h2>
+            <p style="font-size:0.95rem;color:#71717a;line-height:1.5;">Smart contracts, tokenization, dApps, and audited decentralized infrastructure.</p>
+          </div>
+          <div style="border:1px solid #e4e4e7;border-radius:12px;padding:24px;">
+            <h2 style="font-size:1.15rem;font-weight:600;margin-bottom:8px;"><a href="/procurement" style="color:#0b0b0f;text-decoration:none;">Tech Procurement</a></h2>
+            <p style="font-size:0.95rem;color:#71717a;line-height:1.5;">Genuine phones, laptops, and tech gadgets delivered nationwide across Nigeria.</p>
+          </div>
+        </section>
+
+        <!-- Machine-Readable Contact Details -->
+        <section style="background:#fafafa;border:1px solid #e4e4e7;border-radius:12px;padding:24px;margin-bottom:48px;">
+          <h2 style="font-size:1.25rem;font-weight:600;margin-bottom:12px;color:#0b0b0f;">Direct Contact Information</h2>
+          <p style="margin-bottom:8px;font-size:15px;color:#3f3f46;">
+            Email: <a href="mailto:hello@novastaq.com" style="color:#4f46e5;font-weight:600;">hello@novastaq.com</a>
+          </p>
+          <p style="margin-bottom:8px;font-size:15px;color:#3f3f46;">
+            Telephone / WhatsApp: <a href="tel:+2348150533325" style="color:#4f46e5;font-weight:600;">+234 815 053 3325</a>
+          </p>
+          <p style="margin-bottom:8px;font-size:15px;color:#3f3f46;">
+            Location: Lagos, Nigeria
+          </p>
+          <p style="font-size:15px;color:#3f3f46;">
+            Online Store: <a href="https://store.novastaq.com" target="_blank" rel="noopener" style="color:#4f46e5;font-weight:600;">store.novastaq.com</a>
+          </p>
+        </section>
+      </main>
+
+      <footer style="max-width:1120px;margin:0 auto;padding:24px;border-top:1px solid #e4e4e7;font-size:13px;color:#71717a;">
+        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:16px;">
+          <div>
+            <p style="font-weight:600;color:#0b0b0f;margin-bottom:8px;">Novastaq Technologies Inc</p>
+            <p>Email: <a href="mailto:hello@novastaq.com" style="color:#0b0b0f;">hello@novastaq.com</a></p>
+            <p>Phone: <a href="tel:+2348150533325" style="color:#0b0b0f;">+234 815 053 3325</a></p>
+          </div>
+          <nav aria-label="Footer navigation" style="display:flex;gap:16px;flex-wrap:wrap;">
+            <a href="/about" style="color:#52525b;text-decoration:none;">About</a>
+            <a href="/services" style="color:#52525b;text-decoration:none;">Services</a>
+            <a href="/procurement" style="color:#52525b;text-decoration:none;">Procurement</a>
+            <a href="/contact" style="color:#52525b;text-decoration:none;">Contact</a>
+            <a href="/refer" style="color:#52525b;text-decoration:none;">Referral Program</a>
+            <a href="/careers" style="color:#52525b;text-decoration:none;">Careers</a>
+            <a href="/bootcamp" style="color:#52525b;text-decoration:none;">Bootcamp</a>
+            <a href="/terms" style="color:#52525b;text-decoration:none;">Terms</a>
+            <a href="/privacy" style="color:#52525b;text-decoration:none;">Privacy</a>
+            <a href="/returns" style="color:#52525b;text-decoration:none;">Refunds &amp; Returns</a>
+          </nav>
+        </div>
+        <p>© 2026 Novastaq Technologies Inc. All rights reserved.</p>
+      </footer>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

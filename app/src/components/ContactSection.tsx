@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Mail, Facebook, Twitter, Instagram, ArrowRight, CheckCircle2, Clock, MessageSquare } from 'lucide-react';
+import { Mail, Phone, Facebook, Twitter, Instagram, ArrowRight, CheckCircle2, Clock, MessageSquare } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { Field, Choices, inputCls, EMAIL_RE } from '@/components/form';
 import { sendForm, INBOX, type SendResult } from '@/lib/sendForm';
@@ -96,6 +96,9 @@ export function ContactSection() {
             <a href="mailto:hello@novastaq.com" className="inline-flex items-center gap-2 text-[15px] text-[#0b0b0f] hover:underline underline-offset-4">
               <Mail className="w-4 h-4 text-[#71717a]" /> hello@novastaq.com
             </a>
+            <a href="tel:+2348150533325" className="inline-flex items-center gap-2 text-[15px] text-[#0b0b0f] hover:underline underline-offset-4">
+              <Phone className="w-4 h-4 text-[#71717a]" /> +234 815 053 3325
+            </a>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[15px] text-[#0b0b0f] hover:underline underline-offset-4">
               <WhatsAppIcon className="w-4 h-4 text-[#71717a]" /> Chat with someone on WhatsApp
             </a>
@@ -130,7 +133,14 @@ export function ContactSection() {
             <button onClick={() => setSent(null)} className="btn-secondary self-start">Send another message</button>
           </div>
         ) : (
-          <form key={preset} onSubmit={handleSubmit} noValidate className={`relative panel p-6 md:p-8 space-y-6 transition-all duration-700 delay-150 ${reveal}`}>
+          <form
+            key={preset}
+            onSubmit={handleSubmit}
+            noValidate
+            data-toolname="request_quote"
+            data-tooldescription="Submit a project enquiry, quote request, or tech procurement order to Novastaq Technologies Inc."
+            className={`relative panel p-6 md:p-8 space-y-6 transition-all duration-700 delay-150 ${reveal}`}
+          >
             {/* spam trap: hidden from people, bots fill it in */}
             <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] w-px h-px opacity-0" />
             <div className="grid sm:grid-cols-2 gap-5">

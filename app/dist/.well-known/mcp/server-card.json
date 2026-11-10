@@ -1,0 +1,83 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/server-card/v1.json",
+  "name": "novastaq-mcp",
+  "title": "Novastaq Technologies MCP Server",
+  "description": "Official Model Context Protocol (MCP) server card for Novastaq Technologies Inc. Exposes tools and resources for software development services, fintech infrastructure, and technology procurement.",
+  "version": "1.0.0",
+  "homepage": "https://novastaq.com",
+  "endpoint": "https://novastaq.com/api/mcp",
+  "transport": {
+    "type": "sse",
+    "url": "https://novastaq.com/api/mcp/sse"
+  },
+  "capabilities": {
+    "tools": {
+      "listChanged": false
+    },
+    "resources": {
+      "subscribe": false,
+      "listChanged": false
+    },
+    "prompts": {
+      "listChanged": false
+    }
+  },
+  "tools": [
+    {
+      "name": "get_services",
+      "description": "Retrieve the full catalog of engineering and procurement services offered by Novastaq Technologies Inc.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "request_quote",
+      "description": "Submit a project brief or tech procurement order request to the Novastaq engineering team.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Full name or company name"
+          },
+          "email": {
+            "type": "string",
+            "description": "Contact email address"
+          },
+          "phone": {
+            "type": "string",
+            "description": "Phone or WhatsApp contact number"
+          },
+          "service": {
+            "type": "string",
+            "description": "Requested service: product-development, fintech, web3, design, consultation, procurement"
+          },
+          "message": {
+            "type": "string",
+            "description": "Project brief and requirements"
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "message"
+        ]
+      }
+    },
+    {
+      "name": "get_contact_info",
+      "description": "Retrieve official contact information and support channels for Novastaq Technologies Inc.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  ],
+  "contact": {
+    "name": "Novastaq Support",
+    "email": "hello@novastaq.com",
+    "phone": "+2348150533325",
+    "url": "https://novastaq.com/contact"
+  }
+}

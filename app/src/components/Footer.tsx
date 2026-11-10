@@ -53,9 +53,14 @@ export function Footer() {
             <p className="text-[13px] leading-relaxed text-[#71717a] max-w-xs mb-6">
               Software, Web3 and tech procurement. We build, launch and scale products, and supply the devices your team runs on.
             </p>
-            <a href="mailto:hello@novastaq.com" className="inline-flex items-center gap-1 text-[13px] text-[#0b0b0f] hover:text-black">
-              hello@novastaq.com <ArrowUpRight className="w-3.5 h-3.5 text-[#71717a]" />
-            </a>
+            <div className="flex flex-col gap-1.5 mb-2">
+              <a href="mailto:hello@novastaq.com" className="inline-flex items-center gap-1 text-[13px] text-[#0b0b0f] hover:text-black">
+                hello@novastaq.com <ArrowUpRight className="w-3.5 h-3.5 text-[#71717a]" />
+              </a>
+              <a href="tel:+2348150533325" className="inline-flex items-center gap-1 text-[13px] text-[#0b0b0f] hover:text-black">
+                +234 815 053 3325 <ArrowUpRight className="w-3.5 h-3.5 text-[#71717a]" />
+              </a>
+            </div>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="mt-2 flex items-center gap-1.5 text-[13px] text-[#0b0b0f] hover:underline underline-offset-4">
               <WhatsAppIcon className="w-3.5 h-3.5 text-[#71717a]" /> Chat with someone on WhatsApp
             </a>

@@ -1,0 +1,64 @@
+# Novastaq Technologies Inc - Complete Agent Guide
+
+> Comprehensive technical and business guide for Novastaq Technologies Inc, covering software engineering capabilities, fintech & Web3 development, hardware procurement, and company information.
+
+## Overview
+Novastaq Technologies Inc is a technology company and venture studio based in Lagos, Nigeria. We engineer high-performance software, build regulated and decentralized financial infrastructure, and procure authentic tech hardware for teams and individuals.
+
+## Services in Detail
+
+### 1. Product Development (Web & Mobile)
+- Architecture: React, TypeScript, React Native, Flutter, Node.js, Go, Python, PHP/Laravel, Postgres, Redis.
+- Scope: Custom platforms, SaaS products, mobile applications, multi-tenant architectures, API design.
+- Delivery: Agile sprints, automated CI/CD pipelines, production deployment, and maintenance.
+- URL: https://novastaq.com/services/product-development
+
+### 2. Fintech & Payments
+- Integrations: Paystack, Monnify, Flutterwave, Nomba, Tsara, Stripe.
+- Systems: Automated bank transfer verification, virtual account issuance, ledger systems, wallet balances, split payments, webhook resilience.
+- Security: End-to-end encryption, fraud mitigation, tokenization, NDPR compliance.
+- URL: https://novastaq.com/services/fintech
+
+### 3. Web3 & Blockchain Infrastructure
+- Protocols: EVM chains (Ethereum, Polygon, Arbitrum, Base), Solana.
+- Scope: Smart contract development (Solidity/Rust), audited tokenomics, Real-World Asset (RWA) tokenization, non-custodial wallets, decentralized exchange protocols.
+- Audits: Formal verification, vulnerability scanning, reentrancy prevention.
+- URL: https://novastaq.com/services/web3
+
+### 4. Product Design (UI/UX)
+- Deliverables: User research, wireframes, interactive Figma prototypes, design systems, conversion optimization.
+- URL: https://novastaq.com/services/design
+
+### 5. Tech Procurement & Hardware Sourcing
+- Categories:
+  - Smartphones: Apple iPhone, Samsung Galaxy, Google Pixel.
+  - Laptops: Apple MacBook (M-series), Lenovo ThinkPad, Dell XPS/Latitude, HP Spectre/EliteBook.
+  - Gadgets & Accessories: Smartwatches, wireless audio, chargers, adapters, power solutions.
+  - Office & Networking: Enterprise routers, monitors, POS systems, workstation setups.
+- Logistics: Insured delivery across all 36 states in Nigeria and FCT Abuja. Genuine warranty and after-sales support.
+- URL: https://novastaq.com/procurement
+
+## Frequently Asked Questions (FAQ)
+
+### What does Novastaq do?
+Novastaq designs, builds, and scales digital products: web and mobile apps, fintech and payment systems, and Web3 infrastructure. We also supply phones, laptops, and tech gadgets to businesses and individuals.
+
+### How long does it take to build a product?
+It depends on scope. After a short discovery call, we provide a detailed technical roadmap, milestone schedule, and fixed or milestone-based quote.
+
+### Do you work with early-stage startups?
+Yes. Our venture studio works with founders from napkin idea to launch, and continues supporting them as they scale.
+
+### Can I buy a single device, or only in bulk?
+Both. We supply individual retail buyers as well as full corporate fleet setups with bulk discounts.
+
+### Do you deliver nationwide?
+Yes. We deliver orders directly to homes or corporate offices across Nigeria.
+
+## Official Contact Details
+- Entity Name: Novastaq Technologies Inc
+- Email: hello@novastaq.com
+- Telephone / WhatsApp: +2348150533325
+- Official Website: https://novastaq.com
+- Online Store: https://store.novastaq.com
+- Primary Location: Lagos, Nigeria
